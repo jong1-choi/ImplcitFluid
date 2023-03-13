@@ -20,7 +20,6 @@ vec2* velocityTemp = nullptr;
 ivec2 mousePt;
 ivec2 lastPt;
 bool pressed = false;
-float radius = 20;
 float H = 1;
 float kappa = 0.01;
 
