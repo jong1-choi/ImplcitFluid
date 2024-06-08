@@ -12,13 +12,13 @@
 
 Explicit Diffuse Term
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image1.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image1.png">
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image2.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image2.png">
 
 Explicit Advection term
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image3.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image3.png">
 
 Time step의 크기에 따라 불안정해지는 것을 확인 할 수 있습니다.
 
@@ -26,18 +26,18 @@ Time step의 크기에 따라 불안정해지는 것을 확인 할 수 있습니
 
 먼저 diffuse term은 2차 편미분값에 확산률이 곱해진 형태로 implcit한 방법을 사용했기 때문에 다음 타임 스텝의 값에서 diffuse term으로 인한 변화를 빼주면 현재 값이 나오게 됩니다. 다음 타임스텝의 값을 모르지만 이러한 형태를 선형 시스템으로 표현하면 행렬 A의 형태가 strictly dominant diagonal의 형태가 되므로 특정 횟수만큼 jacobi iteration을 사용하여 값을 근사합니다.
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image4.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image4.png">
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image5.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image5.png">
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image6.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image6.png">
 
 또 advection term은 implicit한 접근으로 각 그리드에서 타임 스텝 만큼의 속도를 빼주면 이전의 해당 부분이 어느 그리드에서 왔는지 알 수 있기 때문에 해당 그리드 주변의 값들을 bi-linear interpolation을 통해 구하고 저장해 두었다가 모든 그리드에서 대해 계산이 완료되면 업데이트 합니다.
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image7.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image7.png">
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image8.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image8.png">
 
-<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image9.png>
+<img src="https://github.com/jong1-choi/ImplcitFluid/blob/main/Images/image9.png">
 
 이러한 식을 밀도와 속도에 대해 각각 계산하여 업데이트 시켜줌으로써 stable fluids를 표현합니다.
